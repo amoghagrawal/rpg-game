@@ -26,4 +26,4 @@
 
 ## Note
 
-I took help from ChatGPT to help me in generating the storyline and expanding the game's narrative elements.
+I took help from ChatGPT in generating the storyline and expanding the game's narrative elements.

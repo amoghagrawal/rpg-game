@@ -1,0 +1,780 @@
+@font-face {
+    font-family: 'Alagard';
+    src: url('/alagard.ttf') format('truetype');
+  }
+
+  h1, h2, h3 {
+    font-family: 'Alagard', cursive;
+  }
+
+  body, .menu-button, button, p, div {
+    font-family: 'Press Start 2P', cursive; 
+  }
+
+  #main-menu h1 {
+    font-family: 'Alagard', cursive;
+    font-size: 48px;
+    color: white;
+  }
+
+  #main-menu h2 {
+    font-family: 'Alagard', cursive;
+    font-size: 24px;
+    color: white;
+    opacity: 0.6;
+  }
+
+  #city-time {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  #battle-log, #noob-battle-log, #sweat-battle-log,
+  #dialog-box, #city-dialog, #spy-dialog, #fortnite-dialog, 
+  #noob-dialog, #lunch-dialog, #eggman-dialog {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  .character-stats h3 {
+    font-family: 'Alagard', cursive;
+  }
+
+  .character-stats p {
+    font-family: 'Press Start 2P', cursive;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 0.3s ease;
+  }
+
+  .menu-button {
+    margin: 0;
+    padding: 20px;
+    background: #2c3e50;
+    color: #ecf0f1;
+  }
+
+  #main-menu, #levels-menu, #bedroom, #game-container, #city-scene, #spy-house, #fortnite-scene, #noob-scene, #noob-battle, #sweat-battle, #lunch-scene, #eggman-scene {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #34495e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    display: none;
+  }
+
+  #main-menu {
+    display: block;
+    text-align: center;
+    background-image: url('/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw; 
+    padding: 40px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+  #main-menu .menu-button {
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  #main-menu .menu-button:hover {
+    background: rgba(192, 57, 43, 0.9);
+  }
+
+  #levels-menu {
+    text-align: center;
+    background: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    box-shadow: none;
+    background-image: url('/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  #levels-menu h2 {
+    font-size: 48px;
+    margin-top: 60px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+    letter-spacing: 2px;
+    color: white;
+  }
+
+  #levels-menu .level-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  #levels-menu .menu-button {
+    min-height: 80px;
+    font-size: 16px;
+    line-height: 1.5;
+    background: rgba(231, 76, 60, 0.9);
+    border: 3px solid rgba(255,255,255,0.3);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  #levels-menu .menu-button:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.5);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  }
+
+  .menu-button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    margin: 10px;
+  }
+
+  .menu-button:hover {
+    transform: scale(1.05);
+    background: #c0392b;
+  }
+
+  .bedroom-options, .city-options, .spy-options, .fortnite-options, .noob-options, .lunch-options, .eggman-options, .level-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  #character-info p,
+  #battle-log, #noob-battle-log, #sweat-battle-log,
+  #dialog-box, #city-dialog, #spy-dialog, #fortnite-dialog,
+  #noob-dialog, #lunch-dialog, #eggman-dialog,
+  .character-stats p,
+  .character-stats h3,
+  .battle-message,
+  #help-content,
+  #help-popup h3 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .character-stats h3,
+  #city-time,
+  #victory-popup h2,
+  #victory-popup p,
+  #victory-message,
+  #game-over-popup h2,
+  #game-over-message {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  #battle-log, #noob-battle-log, #sweat-battle-log,
+  #dialog-box, #city-dialog, #spy-dialog, #fortnite-dialog, 
+  #noob-dialog, #lunch-dialog, #eggman-dialog,
+  .battle-message {
+    background: rgba(44, 62, 80, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 600px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    line-height: 2;
+  }
+
+  .action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    background: #c0392b;
+  }
+
+  .health-bar {
+    width: 100%;
+    height: 20px;
+    background: #95a5a6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+  }
+
+  .health-fill {
+    height: 100%;
+    background: #27ae60;
+    transition: width 0.3s;
+  }
+
+  #city-time {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    z-index: 1000;
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  .back-button:hover {
+    transform: scale(1.05);
+    background: rgba(192, 57, 43, 0.9);
+  }
+
+  #bedroom {
+    text-align: center;
+    background: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    box-shadow: none;
+    background-image: url('/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  #bedroom h2 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .bedroom-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 600px;
+    padding: 0 20px;
+  }
+
+  #bedroom .menu-button {
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    font-size: 16px;
+    padding: 20px;
+    transition: all 0.2s;
+  }
+
+  #bedroom .menu-button:hover {
+    background: rgba(192, 57, 43, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  #city-scene {
+    text-align: center;
+    background: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    box-shadow: none;
+    background-image: url('/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  #city-scene h2 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  #city-dialog, #spy-dialog, #fortnite-dialog, #noob-dialog, #lunch-dialog, #eggman-dialog {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    background: rgba(44, 62, 80, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+
+  #dialog-box {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    background: rgba(44, 62, 80, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+
+  #city-scene .city-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 600px;
+    padding: 0 20px;
+  }
+
+  #city-scene .menu-button {
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    font-size: 16px;
+    padding: 20px;
+    transition: all 0.2s;
+  }
+
+  #city-scene .menu-button:hover {
+    background: rgba(192, 57, 43, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  #spy-house, #fortnite-scene, #noob-scene, #noob-battle, #sweat-battle, #lunch-scene, #eggman-scene {
+    text-align: center;
+    background: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    box-shadow: none;
+    background-image: url('/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  #spy-house h2, #fortnite-scene h2, #noob-scene h2, #noob-battle h2, #sweat-battle h2, #lunch-scene h2, #eggman-scene h2 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .spy-options, .fortnite-options, .noob-options, .lunch-options, .eggman-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 600px;
+    padding: 0 20px;
+  }
+
+  #spy-house .menu-button, #fortnite-scene .menu-button, #noob-scene .menu-button, #lunch-scene .menu-button, #eggman-scene .menu-button {
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    font-size: 16px;
+    padding: 20px;
+    transition: all 0.2s;
+  }
+
+  #spy-house .menu-button:hover, #fortnite-scene .menu-button:hover, #noob-scene .menu-button:hover, #lunch-scene .menu-button:hover, #eggman-scene .menu-button:hover {
+    background: rgba(192, 57, 43, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  #noob-battle-log, #sweat-battle-log {
+    background: rgba(44, 62, 80, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 600px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    line-height: 2;
+  }
+
+  #noob-battle .character-stats, #sweat-battle .character-stats {
+    background: rgba(44, 62, 80, 0.8);
+  }
+
+  #noob-battle .action-buttons, #sweat-battle .action-buttons {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  #noob-battle button, #sweat-battle button {
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  #noob-battle button:hover, #sweat-battle button:hover {
+    background: rgba(192, 57, 43, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  .battle-message {
+    margin: 10px 0;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  #help-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(44, 62, 80, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    max-width: 300px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255,255,255,0.2);
+    display: none;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  }
+
+  #help-popup.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #help-popup h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  #help-content {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  #game-over-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  }
+
+  #game-over-overlay.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  #game-over-popup {
+    background: rgba(44, 62, 80, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  #game-over-popup.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #game-over-popup h2 {
+    font-family: 'Alagard', cursive;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  #game-over-popup button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  #game-over-popup button:hover {
+    background: rgba(192, 57, 43, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  #instructions-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  }
+
+  #instructions-overlay.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  #instructions-popup {
+    background: rgba(44, 62, 80, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    max-width: 600px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  #instructions-popup.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #instructions-popup h2 {
+    font-family: 'Alagard', cursive;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  #instructions-content p {
+    margin: 15px 0;
+    line-height: 1.4;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  #instructions-popup button {
+    margin-top: 20px;
+    padding: 15px 30px;
+  }
+
+  #game-over-overlay, #instructions-overlay {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  }
+
+  #game-over-overlay.visible, #instructions-overlay.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  #game-over-popup, #instructions-popup {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  #game-over-popup.visible, #instructions-popup.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #game-container {
+    text-align: center;
+    background: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    box-shadow: none;
+    background-image: url('/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  #game-container h1 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  #game-container .action-buttons {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  #game-container button {
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    font-size: 16px;
+    padding: 20px;
+    transition: all 0.2s;
+  }
+
+  #game-container button:hover {
+    background: rgba(192, 57, 43, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  #character-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 0 20px;
+  }
+
+  .character-stats {
+    background: rgba(44, 62, 80, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+  }
+
+  #battle-log {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 0 20px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(231, 76, 60, 0.9) rgba(44, 62, 80, 0.8);
+  }
+
+  #battle-log::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  #battle-log::-webkit-scrollbar-track {
+    background: rgba(44, 62, 80, 0.8);
+    border-radius: 4px;
+  }
+
+  #battle-log::-webkit-scrollbar-thumb {
+    background: rgba(231, 76, 60, 0.9);
+    border-radius: 4px;
+  }
+  .menu-button:disabled, button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  #music-controls .menu-button {
+    background: rgba(231, 76, 60, 0.9);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: all 0.2s;
+  }
+
+  #music-controls .menu-button:hover {
+    background: rgba(192, 57, 43, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }

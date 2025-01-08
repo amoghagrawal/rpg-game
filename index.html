@@ -1,0 +1,302 @@
+<html><head><base href=".">
+  <title>Heavy's Tale: RPG</title>
+  <link rel="preload" href="/alagard.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" as="style">
+  <link rel="preload" href="/background.png" as="image">
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="main-menu">
+    <h1>Heavy's Tale</h1>
+    <h2>The Ultimate RPG Experience: The Beginning</h2>
+    <button class="menu-button" onclick="startGame()">Start Game</button>
+    <button class="menu-button" onclick="showLevels()">Levels</button>
+    <button class="menu-button" onclick="showInstructions()">Instructions</button>
+  </div>
+
+  <div id="levels-menu">
+    <button class="back-button" onclick="backToMain()">Back</button>
+    <h2>Select Level</h2>
+    <div class="level-options">
+      <button class="menu-button" onclick="startFromBedroom()">Wake Up</button>
+      <button class="menu-button" onclick="startFromCity()">City (After Scout)</button>
+      <button class="menu-button" onclick="startFromSpyHouse()">Spy&apos;s House</button>
+      <button class="menu-button" onclick="startFromFortnite()">Fortnite Game</button>
+      <button class="menu-button" onclick="startFromNoobBattle()">Noob Battle</button>
+      <button class="menu-button" onclick="startFromSweatBattle()">Sweat Battle</button>
+      <button class="menu-button" onclick="startFromLunch()">Back Home (Lunch)</button>
+      <button class="menu-button" onclick="startFromEggman()">Eggman Weapons Guy</button>
+    </div>
+  </div>
+
+  <div id="bedroom">
+    <button class="back-button" onclick="backToMain()">Back</button>
+    <h2>Heavy&apos;s Bedroom</h2>
+    <div id="dialog-box">
+      Heavy wakes up feeling hungry. What should Heavy eat for breakfast?
+    </div>
+    <div class="bedroom-options">
+      <button class="menu-button" onclick="eatFood('chocolate')">Eat Chocolate</button>
+      <button class="menu-button" onclick="eatFood('steak')">Eat Steak</button>
+      <button class="menu-button" onclick="eatFood('sandwich')">Eat Sandwich</button>
+    </div>
+  </div>
+
+  <div id="game-container">
+    <h1>Scout Wars</h1>
+    
+    <div id="character-info">
+      <div class="character-stats">
+        <h3>Heavy</h3>
+        <div class="health-bar">
+          <div id="player-health" class="health-fill" style="width: 100%"></div>
+        </div>
+        <p>HP: <span id="player-hp">300</span>/300</p>
+        <p>Sandwich: <span id="sandwich-count">3</span></p>
+      </div>
+      
+      <div class="character-stats">
+        <h3>Enemy Scout</h3>
+        <div class="health-bar">
+          <div id="enemy-health" class="health-fill" style="width: 100%"></div>
+        </div>
+        <p>HP: <span id="enemy-hp">125</span>/125</p>
+      </div>
+    </div>
+
+    <div id="battle-log">
+      <div class="battle-message">Welcome to Scout Wars! You are Heavy Weapons Guy.</div>
+      <div class="battle-message">A wild Scout appears! &quot;BONK!&quot;</div>
+    </div>
+
+    <div class="action-buttons">
+      <button onclick="attack()">Attack with Minigun</button>
+      <button onclick="heal()">Eat Sandwich</button>
+      <button onclick="specialAttack()">POW! (Special)</button>
+      <button onclick="taunt()">Taunt</button>
+    </div>
+  </div>
+
+  <div id="city-scene">
+    <h2>City Center</h2>
+    <div id="city-time">10:10</div>
+    <div id="city-dialog">
+      Heavy stands victorious in the city. What should Heavy do now?
+    </div>
+    <div class="city-options">
+      <button class="menu-button" onclick="cityChoice('gunshow')">Go to Gun Show</button>
+      <button class="menu-button" onclick="cityChoice('fly')">Fly Away</button>
+      <button class="menu-button" onclick="cityChoice('sandwich')">Eat Sandwich</button>
+      <button class="menu-button" onclick="cityChoice('home')">Walk Back Home</button>
+    </div>
+  </div>
+
+  <div id="spy-house" style="display: none">
+    <h2>Spy&apos;s House</h2>
+    <div id="spy-dialog">
+      Welcome to my humble abode, mon ami! What shall we do?
+    </div>
+    <div class="spy-options">
+      <button class="menu-button" onclick="spyActivity('fortnite')">Play Fortnite</button>
+      <button class="menu-button" onclick="spyActivity('dance')">Do a Lil Dance</button>
+      <button class="menu-button" onclick="spyActivity('radio')">Turn on Radio</button>
+      <button class="menu-button" onclick="spyActivity('laugh')">Laugh with Spy</button>
+    </div>
+  </div>
+
+  <div id="fortnite-scene" style="display: none">
+    <h2>Playing Fortnite with Spy</h2>
+    <div id="fortnite-dialog">
+      After shooting once, a sweat instantly builds an entire house! Heavy is very confused...
+    </div>
+    <div class="fortnite-options">
+      <button class="menu-button" onclick="fortniteChoice('leave')">Leave Game</button>
+      <button class="menu-button" onclick="fortniteChoice('fight')">Fight the Sweat</button>
+      <button class="menu-button" onclick="fortniteChoice('build')">Build a City</button>
+      <button class="menu-button" onclick="fortniteChoice('walk')">Walk Away</button>
+    </div>
+  </div>
+
+  <div id="noob-scene" style="display: none">
+    <h2>Noob Encounter</h2>
+    <div id="noob-dialog">
+      Heavy finds two noobs building wooden walls incorrectly. They look confused.
+    </div>
+    <div class="noob-options">
+      <button class="menu-button" onclick="noobChoice('killboth')">Kill Both Noobs</button>
+      <button class="menu-button" onclick="noobChoice('killone')">Kill One Noob</button>
+      <button class="menu-button" onclick="noobChoice('walkback')">Walk Back</button>    </div>
+  </div>
+
+  <div id="noob-battle" style="display: none">
+    <h1>Battle Against the Noob</h1>
+    
+    <div id="character-info">
+      <div class="character-stats">
+        <h3>Heavy</h3>
+        <div class="health-bar">
+          <div id="noob-battle-player-health" class="health-fill" style="width: 100%"></div>
+        </div>
+        <p>HP: <span id="noob-battle-player-hp">300</span>/300</p>
+        <p>Sandwich: <span id="noob-battle-sandwich-count">3</span></p>
+      </div>
+      
+      <div class="character-stats">
+        <h3>Angry Noob</h3>
+        <div class="health-bar">
+          <div id="noob-battle-enemy-health" class="health-fill" style="width: 100%"></div>
+        </div>
+        <p>HP: <span id="noob-battle-enemy-hp">75</span>/75</p>
+      </div>
+    </div>
+
+    <div id="noob-battle-log">
+      <div class="battle-message">The remaining noob is angry! He wants revenge!</div>
+    </div>
+
+    <div class="action-buttons">
+      <button onclick="noobBattleAttack()">Attack with Minigun</button>
+      <button onclick="noobBattleHeal()">Eat Sandwich</button>
+      <button onclick="noobBattleSpecial()">POW! (Special)</button>
+      <button onclick="noobBattleTaunt()">Taunt</button>
+    </div>
+  </div>
+
+  <div id="sweat-battle" style="display: none">
+    <h1>Heavy vs Sweat</h1>
+    
+    <div id="character-info">
+      <div class="character-stats">
+        <h3>Heavy</h3>
+        <div class="health-bar">
+          <div id="sweat-battle-player-health" class="health-fill" style="width: 100%"></div>
+        </div>
+        <p>HP: <span id="sweat-battle-player-hp">300</span>/300</p>
+        <p>Sandwich: <span id="sweat-battle-sandwich-count">3</span></p>
+      </div>
+      
+      <div class="character-stats">
+        <h3>Angry Sweat</h3>
+        <div class="health-bar">
+          <div id="sweat-battle-enemy-health" class="health-fill" style="width: 100%"></div>
+        </div>
+        <p>HP: <span id="sweat-battle-enemy-hp">200</span>/200</p>
+      </div>
+    </div>
+
+    <div id="sweat-battle-log">
+      <div class="battle-message">The sweat has returned for revenge! He&apos;s armed with multiple weapons!</div>
+    </div>
+
+    <div class="action-buttons">
+      <button onclick="sweatBattleAttack()">Attack with Minigun</button>
+      <button onclick="sweatBattleHeal()">Eat Sandwich</button>
+      <button onclick="sweatBattleSpecial()">POW! (Special)</button>
+      <button onclick="sweatBattleTaunt()">Taunt</button>
+    </div>
+  </div>
+
+  <div id="lunch-scene">
+    <h2>Heavy&apos;s Kitchen</h2>
+    <div id="lunch-dialog">
+      After defeating the sweat, Heavy returns home to make lunch. What should Heavy eat?
+    </div>
+    <div class="lunch-options">
+      <button class="menu-button" onclick="makeLunch('chocolate')">Make Chocolate Lunch</button>
+      <button class="menu-button" onclick="makeLunch('steak')">Cook Steak</button>
+      <button class="menu-button" onclick="makeLunch('sandwich')">Create Sandwich</button>
+      <button class="menu-button" onclick="makeLunch('sour')">Eat Sour Waste</button>
+    </div>
+  </div>
+
+  <div id="eggman-scene" style="display: none">
+    <h2>Heavy as Eggman</h2>
+    <div id="eggman-dialog">
+      Inspired by Eggman&apos;s heroic sacrifice, Heavy dresses up in a red coat and goggles!
+      &quot;I AM EGGMAN WEAPONS GUY!&quot;
+    </div>
+    <div class="eggman-options">
+    </div>
+  </div>
+
+  <div id="game-over-overlay">
+    <div id="game-over-popup">
+      <h2>Game Over</h2>
+      <p id="game-over-message"></p>
+      <button onclick="document.getElementById('game-over-overlay').classList.remove('visible'); document.getElementById('game-over-popup').classList.remove('visible'); setTimeout(() => { location.reload(); }, 300);">Return to Main Menu</button>
+    </div>
+  </div>
+
+  <div id="instructions-overlay" style="display: none">
+    <div id="instructions-popup">
+      <h2>How to Play</h2>
+      <div id="instructions-content">
+        <p>1. Battle enemies using attacks and special moves</p>
+        <p>2. Use sandwiches to heal when low on health</p>
+        <p>3. Charge your special attack by dealing damage</p>
+        <p>4. Explore different areas and make choices</p>
+        <p>5. Win battles to unlock new levels</p>
+      </div>
+      <button class="menu-button" onclick="document.getElementById('instructions-overlay').classList.remove('visible'); document.getElementById('instructions-popup').classList.remove('visible'); setTimeout(() => { document.getElementById('instructions-overlay').style.display = 'none'; }, 300);">Got it!</button>
+    </div>
+  </div>
+
+  <div id="help-popup">
+    <h3>How to Play</h3>
+    <div id="help-content"></div>
+  </div>
+
+  <div id="music-controls" style="position: fixed; top: 20px; right: 20px; z-index: 1001;">
+    <button id="toggle-music" class="menu-button" style="padding: 8px 16px; font-size: 12px;">
+      Music: Off
+    </button>
+  </div>
+
+  <audio id="background-music" loop preload="auto">
+    <source src="https://vgmsite.com/soundtracks/mega-man-2-original-soundtrack/gbhyolhw/12%20Dr.%20Wily%20Stage%201.mp3" type="audio/mpeg">
+    <source src="https://meganeko.bandcamp.com/track/machine-heart" type="audio/mpeg">
+    <source src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/8bit%20Dungeon%20Boss.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="attack-sound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2771/2771-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="heal-sound" preload="auto">  
+    <source src="https://minecraft-sounds.com/wp-content/uploads/2022/12/Eating-Sound-Effect.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="special-sound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2882/2882-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="victory-sound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="defeat-sound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/1428/1428-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="button-sound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/1705/1705-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="damage-sound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="enemy-damage-sound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2572/2572-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="food-pickup-sound" preload="auto">
+    <source src="https://minecraft-sounds.com/wp-content/uploads/2022/12/item-pickup.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="food-complete-sound" preload="auto">
+    <source src="https://minecraft-sounds.com/wp-content/uploads/2022/12/burp.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="select-sound" preload="auto">
+    <source src="https://minecraft-sounds.com/wp-content/uploads/2022/12/click.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="flying-sound" preload="auto">
+    <source src="https://minecraft-sounds.com/wp-content/uploads/2022/12/swoosh.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="failed-sound" preload="auto">
+    <source src="https://minecraft-sounds.com/wp-content/uploads/2022/12/pain.mp3" type="audio/mpeg">
+  </audio>
+  <script src="/script.js"></script>
+</body>
+</html>
